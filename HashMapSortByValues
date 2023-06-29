@@ -1,0 +1,24 @@
+package com.employee;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class OperationString {
+
+	public static void main(String [] args) {
+		HashMap<Integer,Integer> hashMap=new HashMap<>();
+		hashMap.put(1, 4);
+		hashMap.put(2, 2);
+		hashMap.put(4, 1);
+		hashMap.put(3, 3);
+
+		LinkedHashMap<Integer, Integer> linked=	
+				hashMap.entrySet().stream().sorted((e1,e2)->{return e1.getValue()-e2.getValue();})
+				.collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(e1,e2)->e1, LinkedHashMap::new));
+
+
+	System.out.println(linked);
+	}
+}
